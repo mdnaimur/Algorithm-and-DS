@@ -1,0 +1,36 @@
+vscode productivity:
+Change Setting cursor blink : it changes cursor blink mode
+change setting cursor somoth: it creates some aanimination when write code
+change bracket pair enable : it helps to identify multiple brakctes with different color
+
+extenstion:
+Theme:
+Palenight Theme
+Github theme
+Dracula Theme
+Copilot Theme
+peacocok : workshpace color that indetify multiple project
+
+---
+
+github copilot: AI tools for helps coding faster
+gitlens: visual git commit and others information
+live server: run static file not need to refresh
+Docker: Docker productivity
+prettier : code formatter
+
+live share:live share code with team memaber
+import cost : helps to calculate size of file
+
+polacode:for presentation code
+javaScript(ES6) code snippets: boost code wrtiing speed
+code runner: allow run multiple progrmming lanague
+
+Reomte SSH: connection remote machine
+Material Icon Theme: change icon and color of floder
+Quokka.js : See the js and Ts output while coding
+
+vs code pdf: read pdf file
+
+Rainbow CSV : read CSV file with proper formate
+
