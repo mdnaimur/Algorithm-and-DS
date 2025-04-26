@@ -14,6 +14,8 @@ Array Custom Operation
 -- toArray ( slice or orginal formate)
 -- toString (print value)
 
+-- unique value check each array
+
 '''
 
 
@@ -26,11 +28,14 @@ class CustomArray:
     def _resize(self, new_capacity):
         if new_capacity == self.capacity:
             return
+
         print(
             f"[DEBUG: resize]: I am working inside resize newCapacity {new_capacity}")
         new_array = [None] * new_capacity
+
         for i in range(self.length):
             new_array[i] = self.array[i]
+
         self.array = new_array
         self.capacity = new_capacity
 
@@ -40,11 +45,13 @@ class CustomArray:
     def _shrink(self):
         if self.capacity // 2 < self.length:
             return
+
         self._resize(max(DEFAULT_CAPACITY, self.capacity // 2))
 
     def push(self, element):
         if self.length == self.capacity:
             self._grow()
+
         self.array[self.length] = element
         # print(f' push: {self.array} = {element}')
         self.length += 1
@@ -52,10 +59,13 @@ class CustomArray:
     def pop(self):
         if self.length == 0:
             raise IndexError("Array is empty")
+
         element = self.array[self.length - 1]
         self.length -= 1
+
         if self.length < self.capacity // 4:
             self._shrink()
+
         return element
 
     def insert(self, index, element):
@@ -93,8 +103,20 @@ class CustomArray:
                 return i
         return -1
 
-    def contains(self, elemet):
-        return self.index_of(elemet) != -1
+    def contains(self, element):
+        return self.index_of(element) != -1
+
+    def unique_value_check(self, element):
+        count = 0
+
+        for i in range(self.length):
+            # if self.array[i] != element:
+            #     return None
+            if self.array[i] == element:
+                count += 1
+        # if count > 1:
+        #     return False
+        return count == 1
 
     def copy(self):
         # new_array = [None] * self.capacity  # it is raw not smart to take
@@ -150,7 +172,7 @@ custom_array.push(20)
 custom_array.push(30)
 
 custom_array.push(15)
-custom_array.push(27)
+custom_array.push(43)
 custom_array.push(32)
 custom_array.push(43)
 
@@ -164,6 +186,11 @@ custom_array.push(43)
 
 print(custom_array.array)
 print(f'lenght is now : {custom_array.length}')
+unique_value = custom_array.unique_value_check(403)
+if unique_value:
+    print("Unique value found")
+else:
+    print("dublicate value")
 
 # newCopyArray = custom_array.copy()
 # print(f'copying array : {newCopyArray}')

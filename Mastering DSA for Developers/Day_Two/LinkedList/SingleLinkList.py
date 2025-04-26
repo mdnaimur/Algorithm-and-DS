@@ -4,7 +4,7 @@ class Node:
         self.next = None
 
 
-class LinkedList:
+class SingleLinkList:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -30,7 +30,6 @@ class LinkedList:
             self.head = new_node
             self.tail = new_node
             return
-
         new_node.next = self.head
         self.head = new_node
 
@@ -50,7 +49,6 @@ class LinkedList:
         current = self.head
         previous = None
         index = 0
-
         while index < position:
             previous = current
             current = current.next
@@ -58,63 +56,11 @@ class LinkedList:
 
         new_node.next = current
         previous.next = new_node
-        self.size += 1
         return True
-
-    def remove(self, data):
-        if not self.head:
-            return False
-
-        if self.head.data == data:
-            self.head = self.head.next
-            self.size -= 1
-            if self.size == 0:
-                self.tail = None
-            return True
-
-        current = self.head
-        while current.next:
-            if current.next.data == data:
-                current.next = current.next.next
-                self.size -= 1
-                if not current.next:
-                    self.tail = current
-                return True
-            current = current.next
-
-        return False
-
-    def remove_at(self, position):
-        if position < 0 or position >= self.size:
-            return None
-
-        if position == 0:
-            removed_node = self.head
-            self.head = self.head.next
-            if self.size == 1:
-                self.tail = None
-        else:
-            current = self.head
-            previous = None
-            index = 0
-
-            while index < position:
-                previous = current
-                current = current.next
-                index += 1
-
-            removed_node = current
-            previous.next = current.next
-            if not current.next:
-                self.tail = previous
-
-        self.size -= 1
-        return removed_node.data
 
     def get(self, position):
         if position < 0 or position >= self.size:
             return None
-
         current = self.head
         index = 0
 
@@ -130,66 +76,121 @@ class LinkedList:
             if current.data == data:
                 return True
             current = current.next
+
         return False
+
+    def get_size(self):
+        return self.size
+
+    def remove(self, data):
+        if not self.head:
+            return False
+
+        if self.head.data == data:
+            self.head = self.head.next
+            self.size -= 1
+            if self.size == 0:
+                self.tail = None
+            return True
+
+        current = self.head
+
+        while current.next:
+            if current.next.data == data:
+                print(f"[DEBUG] inside remove : {current.next.data}")
+                current.next = current.next.next
+                print(
+                    f"[DEBUG] inside remove current.next.next : {current.next.data}")
+                self.size -= 1
+                if not current.next:
+                    self.tail = current
+                return True
+            current = current.next
+        return False
+
+    def remove_at(self, position):
+        if position < 0 or position >= self.size:
+            raise IndexError("Invalid Index Postion")
+
+        if position == 0:
+            removed_node = self.head
+            self.head = self.head.next
+            if self.size == 1:
+                self.tail = None
+        else:
+            current = self.head
+            previous = None
+            index = 0
+            while index < position:
+                previous = current
+                current = current.next
+                index += 1
+            removed_node = current
+            previous.next = current.next
+            if not current.next:
+                self.tail = previous
+        self.size -= 1
+        return removed_node.data
+
+    def is_empty(self):
+        return self.size == 0
 
     def clear(self):
         self.head = None
         self.tail = None
         self.size = 0
 
-    def get_size(self):
-        return self.size
-
-    def is_empty(self):
-        return self.size == 0
-
     def to_array(self):
-        array = []
+        element = []
         current = self.head
         while current:
-            array.append(current.data)
+            element.append(current.data)
             current = current.next
-        return array
+        return element
+
+    def __str__(self):
+        element_array = []
+        current = self.head
+        while current:
+            element_array.append(str(current.data))
+            current = current.next
+        return " -> ".join(element_array) + " -> None"
 
 
-# Create a new LinkedList
-ll = LinkedList()
+link = SingleLinkList()
 
-# Append elements
-ll.append(10)
-ll.append(20)
-ll.append(30)
-print("After appending 10, 20, 30:", ll.to_array())
+link.append(59)
+link.append(99)
+link.append(39)
+link.append(79)
 
-# Prepend an element
-ll.prepend(5)
-print("After prepending 5:", ll.to_array())
+print("After appending ", link.to_array())
+# link.remove(39)
+link.remove_at(2)
+print("After remove ", link.to_array())
+link.prepend(100)
+print("After Prepned ", link)
+print("After Prepned size ", link.size)
+link.insert_at(157, 4)
+print("After isertAt: ", link)
+print("After isertAt size: ", link.size)
 
-# Insert element at position
-ll.insert_at(15, 2)
-print("After inserting 15 at index 2:", ll.to_array())
+get_data = link.get(4)
+print("After getting data: ", get_data)
+if link.contains(99):
+    print("Data found")
+else:
+    print("not found")
 
-# Get an element by position
-print("Element at index 3:", ll.get(3))
+linkData = link
+print("copy data get size", linkData.to_array())
 
-# Check if a value exists
-print("Contains 20?", ll.contains(20))
-print("Contains 100?", ll.contains(100))
+print("After Data clean: ", link.clear())
 
-# Remove a value
-ll.remove(15)
-print("After removing 15:", ll.to_array())
+if link.is_empty():
+    print("Value is empthy after clear")
+else:
+    print("Value found")
 
-# Remove at position
-ll.remove_at(0)
-print("After removing element at index 0:", ll.to_array())
 
-# Check size and if list is empty
-print("Size of list:", ll.get_size())
-print("Is list empty?", ll.is_empty())
-
-# Clear the list
-ll.clear()
-print("After clearing list:", ll.to_array())
-print("Size after clear:", ll.get_size())
-print("Is list empty after clear?", ll.is_empty())
+print("copy data get size", linkData.get_size())
