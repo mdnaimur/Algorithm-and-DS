@@ -58,6 +58,9 @@ class SingleLinkList:
         previous.next = new_node
         return True
 
+    # def insert_at_end(self, data):
+    #     new_node = Node(data)
+
     def get(self, position):
         if position < 0 or position >= self.size:
             return None
@@ -132,6 +135,22 @@ class SingleLinkList:
         self.size -= 1
         return removed_node.data
 
+    def array_to_link_list(self, arr):
+        if not arr:
+            return None
+
+        self.head = Node(arr[0])
+        current = self.head
+        self.size = 1
+
+        for data in arr[1:]:
+            new_node = Node(data)
+            current.next = new_node
+            current = new_node
+            self.size += 1
+
+        self.tail = current
+
     def is_empty(self):
         return self.size == 0
 
@@ -174,6 +193,10 @@ print("After Prepned size ", link.size)
 link.insert_at(157, 4)
 print("After isertAt: ", link)
 print("After isertAt size: ", link.size)
+
+arr = [3, 4, 5, 6, 7, 15]
+link.array_to_link_list(arr)
+print("arr to linkedlist ", link)
 
 get_data = link.get(4)
 print("After getting data: ", get_data)

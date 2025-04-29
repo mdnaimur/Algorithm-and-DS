@@ -5,7 +5,7 @@ class Node:
         self.prev = None
 
 
-class DoublyLinkedList:
+class DoubleLinkedLst:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -68,23 +68,38 @@ class DoublyLinkedList:
                 self.size -= 1
                 return True
 
+            print("$ Current value", current.data)
+            print("$ [Current.next ⭕] value", current.next.data)
+            print("$ [Current.prev 🙋‍♂️] value", current.prev.data)
             current.prev.next = current.next
+            print("[DEBUG:🚑] (current.prev.next)", current.prev.next.data)
             current.next.prev = current.prev
+            print("[DEBUG:🚑] (current.next.prev)", current.next.prev.data)
             self.size -= 1
             return True
 
         return False
 
-    def get_size(self):
-        return self.size
+    def __str__(self):
+        if not self.head:
+            return "Empty List"
 
-    def is_empty(self):
-        return self.size == 0
-
-    def to_array(self):
         array = []
         current = self.head
         while current:
-            array.append(current.data)
+            array.append(str(current.data))
             current = current.next
-        return array
+        return " <--> ".join(array) + " <--> [null]"
+
+
+doubleLinkList = DoubleLinkedLst()
+
+doubleLinkList.append(30)
+doubleLinkList.append(40)
+doubleLinkList.append(50)
+doubleLinkList.append(60)
+doubleLinkList.append(70)
+
+print("Double linklist value: ", doubleLinkList)
+doubleLinkList.remove(50)
+print("Afater Remove", doubleLinkList)

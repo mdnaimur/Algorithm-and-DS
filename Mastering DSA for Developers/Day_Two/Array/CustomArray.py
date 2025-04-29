@@ -56,6 +56,19 @@ class CustomArray:
         # print(f' push: {self.array} = {element}')
         self.length += 1
 
+    def push_front(self, element):
+        index = 0
+        if self.length == index:
+            self.array[index] = element
+            self.length += 1
+            return
+
+        for i in range(self.length, index, -1):
+            self.array[i] = self.array[i - 1]
+
+        self.array[index] = element
+        self.length += 1
+
     def pop(self):
         if self.length == 0:
             raise IndexError("Array is empty")
@@ -114,9 +127,18 @@ class CustomArray:
             #     return None
             if self.array[i] == element:
                 count += 1
+                if count > 1:
+                    return False
         # if count > 1:
         #     return False
         return count == 1
+
+    def is_all_unique_value(self):
+        for i in range(self.length):
+            for j in range(i + 1, self.length):
+                if self.array[i] == self.array[j]:
+                    return False
+        return True
 
     def copy(self):
         # new_array = [None] * self.capacity  # it is raw not smart to take
@@ -161,10 +183,10 @@ class CustomArray:
 
 # Example usage:
 custom_array = CustomArray()
-custom_array.push(5)
-custom_array.push(7)
-custom_array.push(2)
-custom_array.push(3)
+# custom_array.push(5)
+# custom_array.push(7)
+# custom_array.push(2)
+# custom_array.push(3)
 
 custom_array.push(50)
 custom_array.push(70)
@@ -174,7 +196,8 @@ custom_array.push(30)
 custom_array.push(15)
 custom_array.push(43)
 custom_array.push(32)
-custom_array.push(43)
+custom_array.push_front(433)
+custom_array.push_front(999)
 
 # custom_array.insert(1, 22)
 # custom_array.insert(0, 15)
@@ -185,12 +208,19 @@ custom_array.push(43)
 # custom_array.remove(3)
 
 print(custom_array.array)
-print(f'lenght is now : {custom_array.length}')
-unique_value = custom_array.unique_value_check(403)
-if unique_value:
-    print("Unique value found")
+
+unique = custom_array.is_all_unique_value()
+print(unique)
+if unique:
+    print(" I am unique")
 else:
-    print("dublicate value")
+    print("Dublicate found")
+# print(f'lenght is now : {custom_array.length}')
+# unique_value = custom_array.unique_value_check(403)
+# if unique_value:
+#     print("Unique value found")
+# else:
+#     print("dublicate value")
 
 # newCopyArray = custom_array.copy()
 # print(f'copying array : {newCopyArray}')
