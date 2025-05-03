@@ -152,6 +152,7 @@ hash_set3.add(2)
 
 print("HashSet 1:", hash_set.values())
 print("HashSet 2:", hash_set2.values())
+print("search elements", hash_set.has(5))
 
 
 def union(setA, setB):

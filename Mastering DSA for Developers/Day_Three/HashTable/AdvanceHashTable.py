@@ -114,6 +114,15 @@ class HashTable:
                     values.append(value)
         return values
 
+    def clone_hashtable(self):
+        new_table = HashTable(self.size)
+        for bucket in self.table:
+            if bucket:
+                for key, value in bucket.entries():
+                    new_table.set(key, value)
+
+        return new_table
+
     def entries(self):
         all_entries = []
         for bucket in self.table:
@@ -134,6 +143,12 @@ hashTable.set("Phone", "01736842161")
 print(hashTable)
 print(hashTable.table)
 print(hashTable.entries())
+copyNewHashTable = hashTable.clone_hashtable()
+
+print("\n\n ________________________New Copy Clone________________________________________")
+
+print("[🩵] new table copy", copyNewHashTable.values())
+print("[🩵] new table copy", copyNewHashTable.entries())
 # print(hashTable.values())
 # print(hashTable.get('name'))
 # print(hashTable.get('Phone'))
@@ -177,6 +192,7 @@ hash_set3.add(2)
 print("HashSet 1:", hash_set.values())
 print("HashSet 2:", hash_set2.values())
 print("HashSet 3:", hash_set3.values())
+print("search elements:", hash_set.has(1))
 
 
 def union(setA, setB):
