@@ -1,6 +1,6 @@
 
-def handle_insert(data):
-    print(f"[Event] 🟢 Inserted: {data}")
+def handle_insert(data, d2):
+    print(f"[Event] 🟢 Inserted: {data} = {d2}")
 
 
 def handle_update(data):

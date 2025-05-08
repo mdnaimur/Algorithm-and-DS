@@ -13,6 +13,7 @@ class SingleLinkList:
         self.on_delete = None
 
     def set_on_insert(self, funcData):
+        print("[👉 ]  i am SetOnInsert Calling", funcData)
         self.on_insert = funcData
 
     def set_on_update(self, funcData):
@@ -34,9 +35,11 @@ class SingleLinkList:
             self.tail.next = new_node
             self.tail = new_node
 
+        print("\nI am calling before on_insert")
         # Event Dirven Trigger
         if self.on_insert:
-            self.on_insert(data)
+            print("\n [DEBUG ]I am Insert function call on_insert; ", data)
+            self.on_insert(data, "Md Naimur Called this")
 
     def preend(self, data):
         new_node = Node(data)

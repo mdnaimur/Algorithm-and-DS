@@ -11,16 +11,16 @@ def main():
 
     lst.insert(10)
     lst.insert(20)
-    lst.insert(30)
-    lst.insert(50)
-    lst.insert(36)
-    lst.insert(90)
+    # lst.insert(30)
+    # lst.insert(50)
+    # lst.insert(36)
+    # lst.insert(90)
 
-    print("Current list", lst)
-    lst.delete(10)
-    print("affter normal delete", lst)
-    lst.update(45, 2)
-    print("afater update: ", lst)
+    # print("Current list", lst)
+    # lst.delete(10)
+    # print("affter normal delete", lst)
+    # lst.update(45, 2)
+    print("after update: ", lst)
 
 
 if __name__ == "__main__":
