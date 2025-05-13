@@ -64,7 +64,7 @@ class HashTable:
         self._keys = set()
 
     def _hash(self, key):
-        hash_value = 6758
+        hash_value = 7899
         for ch in key:
             hash_value = (hash_value * 3) ^ ord(ch)
             # print("[⭕ Inside _hash] hash_value", hash_value)

@@ -3,11 +3,13 @@ from core.utils import next_prime
 
 
 class SecureHashTable:
-    def __init__(self, initial_capacity=11, load_factor=0.75):
+    def __init__(self, initial_capacity=7, load_factor=0.75):
         self.capacity = next_prime(initial_capacity)
+        print("Capcicty check", self.capacity)
         self.size = 0
         self.load_factor = load_factor
         self.buckets = [[] for _ in range(self.capacity)]
+        print("Chekcing bucket: ", self.buckets)
         self.key_order = []
         self.ttl_store = {}
 

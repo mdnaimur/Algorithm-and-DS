@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    container_name: secure_hash_container_linkedList
+    volumes:
+      - .:/app
+    #command: python main.py
+    command: pytest
