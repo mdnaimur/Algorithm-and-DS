@@ -59,12 +59,12 @@ class HashTable:
 
     def get(self, key):
         # expired key
-        if self._is_expired:
+        if self._is_expired(key):
             return None
 
         index = self._hash(key)
         bucket = self.table[index]
-        print("I am inside bucket", bucket)
+        # print("I am inside bucket", bucket)
         if not bucket:
             return None
         return bucket.find(key)

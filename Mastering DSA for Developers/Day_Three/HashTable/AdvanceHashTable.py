@@ -134,11 +134,15 @@ class HashTable:
 
 hashTable = HashTable(1)
 
-hashTable.set("name", "Naimur")
-hashTable.set("University", "HUB")
-hashTable.set("City", "Narayanganj")
-hashTable.set("Country", "Bangladesh")
-hashTable.set("Phone", "01736842161")
+# hashTable.set("name", "Naimur")
+# hashTable.set("University", "HUB")
+# hashTable.set("City", "Narayanganj")
+# hashTable.set("Country", "Bangladesh")
+# hashTable.set("Phone", "01736842161")
+hashTable.set("P001", {"name": "Laptop", "quantity": 10, "price": 999.99})
+hashTable.set("P002", {"name": "Mouse", "quantity": 50, "price": 25.00})
+hashTable.set("P003", {"name": "Keyboard", "quantity": 30, "price": 45.00})
+hashTable.set("P004", {"name": "Monitor", "quantity": 20, "price": 150.00})
 
 print(hashTable)
 print(hashTable.table)
@@ -149,9 +153,9 @@ print("\n\n ________________________New Copy Clone______________________________
 
 print("[🩵] new table copy", copyNewHashTable.values())
 print("[🩵] new table copy", copyNewHashTable.entries())
-# print(hashTable.values())
-# print(hashTable.get('name'))
-# print(hashTable.get('Phone'))
+print(hashTable.values())
+print(hashTable.get('name'))
+print(hashTable.get('Phone'))
 
 print("________________________________________________________________")
 
