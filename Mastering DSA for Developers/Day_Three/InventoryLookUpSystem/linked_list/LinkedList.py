@@ -1,11 +1,23 @@
-from Node import Node
+import os
+import sys
+from linked_list.Node import Node
+
+# Get the absolute path of the current file (main.py)
+current_file_path = os.path.abspath(__file__)
+project_root = os.path.dirname(current_file_path)
+
+# Add the root directory to sys.path
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+# Now import your modules
 
 
 class LinkedList():
     def __init__(self):
         self.head = None
 
-    def inser(self, key, product):
+    def insert(self, key, product):
         new_node = Node(key, product)
         if not self.head:
             self.head = new_node
