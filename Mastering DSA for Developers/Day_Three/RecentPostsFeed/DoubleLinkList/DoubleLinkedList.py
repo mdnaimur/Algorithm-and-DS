@@ -18,7 +18,7 @@ class DoubleLinkedList:
 
         new_node.prev = self.tail
         self.tail.next = new_node
-        new_node = self.tail
+        self.tail = new_node
 
     def prepend(self, data):
         new_node = Node(data)
@@ -32,6 +32,20 @@ class DoubleLinkedList:
         new_node.next = self.head
         self.head.prev = new_node
         self.head = new_node
+
+    # TODO preRemove()
+
+    def pop_front(self):
+        if not self.head:
+            return None
+
+        current = self.head
+        self.head = current.next
+        if self.head:
+            self.head.prev = None
+        else:
+            self.tail = None
+        self.size -= 1
 
     def remove(self, data):
         if not self.head:
@@ -63,3 +77,12 @@ class DoubleLinkedList:
                     self.tail.next = None
                 self.size -= 1
                 return True
+
+# print and string
+    def to_list(self):
+        result = []
+        current = self.head
+        while current:
+            result.append(current.data)
+            current = current.next
+        return result
