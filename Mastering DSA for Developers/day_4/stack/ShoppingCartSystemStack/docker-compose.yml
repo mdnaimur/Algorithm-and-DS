@@ -1,0 +1,10 @@
+version: '3.11'
+
+services:
+  app:
+    build: .
+    container_name: inventory_lookup_system  
+    volumes:
+      - .:/app
+    command: python main.py
+    #command: pytest
