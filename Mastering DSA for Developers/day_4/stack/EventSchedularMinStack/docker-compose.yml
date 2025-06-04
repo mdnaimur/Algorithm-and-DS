@@ -1,0 +1,10 @@
+version: '3.11'
+
+services:
+  app:
+    build: .
+    container_name: EventSchedularMinStack  
+    volumes:
+      - .:/app
+    command: python main.py
+    #command: pytest
